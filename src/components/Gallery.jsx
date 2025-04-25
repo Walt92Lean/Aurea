@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import project1 from "../assets/projects/Cafe.jpg";
-import project2 from "../assets/projects/Ecomoda.jpg";
+import project2 from "../assets/projects/ecomoda.jpg";
 import project3 from "../assets/projects/technova.jpg";
 
 const projects = [

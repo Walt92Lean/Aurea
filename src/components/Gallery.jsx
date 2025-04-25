@@ -1,9 +1,9 @@
 // src/components/Gallery.jsx
 import React from "react";
 import { motion } from "framer-motion";
-import project1 from "../assets/projects/Hero1.jpg";
-import project2 from "../assets/projects/Hero2.jpg";
-import project3 from "../assets/projects/Hero3.jpg";
+import project1 from "../assets/projects/Cafe.jpg";
+import project2 from "../assets/projects/Ecomoda.jpg";
+import project3 from "../assets/projects/technova.jpg";
 
 const projects = [
   { title: "Rediseño Web para Café Nube", image: project1 },

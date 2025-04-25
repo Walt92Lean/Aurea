@@ -19,3 +19,14 @@ h1, h2, h3 {
 .brand-text {
   font-family: 'Bricolage Grotesque', sans-serif;
 }
+
+/* src/styles/index.css */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}

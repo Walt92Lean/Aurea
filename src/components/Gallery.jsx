@@ -2,11 +2,15 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// Ejemplo de proyectos
+// Asegúrate de importar las imágenes correctas
+import project1 from "../assets/projects/Hero1.jpg";
+import project2 from "../assets/projects/Hero2.jpg";
+import project3 from "../assets/projects/Hero3.jpg";
+
 const projects = [
-  { title: "Rediseño Web para Café Nube", image: "src/assets//projects/Hero1.jpg" },
-  { title: "Campaña Digital EcoModa", image: "src/assets/projects/Hero2.jpg" },
-  { title: "Desarrollo eCommerce - TechNova", image: "src/assets/projects/Hero3.jpg" },
+  { title: "Rediseño Web para Café Nube", image: project1 },
+  { title: "Campaña Digital EcoModa", image: project2 },
+  { title: "Desarrollo eCommerce - TechNova", image: project3 },
 ];
 
 const Gallery = () => {

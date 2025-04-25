@@ -5,16 +5,19 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        'the-seasons': ['The Seasons', 'sans-serif'],
-        'bricolage-grotesque': ['Bricolage Grotesque', 'sans-serif'],
-        'pier-sans': ['Pier Sans', 'sans-serif'],
-      },
       colors: {
-        'dark-black': '#1d1d1b',
-        'light-beige': '#e7decd',
-        'soft-gold': '#ac8e60',
-      }
+        primary: '#1d1d1b',
+        secondary: '#e7decd',
+        accent: '#ac8e60',
+        black: '#000000',
+        white: '#ffffff',
+        gray: '#808080', // Gris adicional
+      },
+      fontFamily: {
+        'pier-sans': ['Pier Sans', 'sans-serif'],
+        'bricolage-grotesque': ['Bricolage Grotesque', 'sans-serif'],
+        'the-seasons': ['The Seasons', 'serif'],
+      },
     },
   },
   plugins: [],

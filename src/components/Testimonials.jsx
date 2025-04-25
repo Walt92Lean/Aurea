@@ -1,66 +1,59 @@
-// src/components/Testimonials.jsx
+// src/components/Testimonios.jsx
 import React from "react";
 import { motion } from "framer-motion";
 
-const testimonials = [
+// Asegúrate de importar las imágenes correctas
+import testimonial1 from "../assets/Hero1.jpg";
+import testimonial2 from "../assets/Hero2.jpg";
+
+const testimonios = [
   {
-    name: "Juan Pérez",
-    image: "https://placeimg.com/200/200/people", // Asegúrate de tener imágenes reales
-    quote: "¡Trabajar con Áurea fue una experiencia increíble! Mejoraron nuestra presencia digital.",
+    name: "Carlos Pérez",
+    job: "CEO de Empresa X",
+    quote: "El trabajo de Áurea Marketing transformó nuestra presencia digital de manera impresionante.",
+    image: testimonial1,  // Aquí usamos la imagen importada
   },
   {
     name: "Ana Gómez",
-    image: "https://placeimg.com/200/200/people",
-    quote: "Excelente servicio, superaron nuestras expectativas en cada aspecto.",
-  },
-  {
-    name: "Carlos López",
-    image: "https://placeimg.com/200/200/people",
-    quote: "Recomiendo a Áurea sin dudas, su trabajo es excepcional y muy profesional.",
+    job: "Directora de Marketing",
+    quote: "Gracias a sus estrategias, nuestras campañas han superado todas nuestras expectativas.",
+    image: testimonial2,  // Aquí usamos la imagen importada
   },
 ];
 
-const Testimonials = () => {
+const Testimonios = () => {
   return (
     <section id="testimonios" className="bg-[#121212] text-[#e7decd] py-20 px-6 md:px-20">
-      <div className="max-w-6xl mx-auto">
-        <motion.h2
-          className="text-4xl md:text-5xl font-bold text-center text-[#ac8e60] mb-12 font-[Bricolage Grotesque]"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          Lo que dicen nuestros clientes
-        </motion.h2>
-        <div className="grid md:grid-cols-3 gap-10">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              className="bg-[#1d1d1b] p-6 rounded-2xl shadow-md border border-[#ac8e60] hover:scale-105 transition"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-            >
-              <motion.img 
-                src={testimonial.image}
-                alt={testimonial.name}
-                className="rounded-full w-32 h-32 object-cover mx-auto mb-4 max-w-full"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              />
-              <h3 className="text-2xl md:text-3xl font-semibold mb-4 text-[#e7decd] font-[Pier Sans]">
-                {testimonial.name}
-              </h3>
-              <p className="text-lg leading-relaxed text-[#e7decd] font-[Pier Sans]">
-                "{testimonial.quote}"
-              </p>
-            </motion.div>
-          ))}
-        </div>
+      <motion.h2
+        className="text-4xl md:text-5xl font-bold text-center text-[#ac8e60] mb-12"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        Testimonios
+      </motion.h2>
+      <div className="grid md:grid-cols-2 gap-10">
+        {testimonios.map((testimonial, index) => (
+          <motion.div
+            key={index}
+            className="bg-[#1d1d1b] p-6 rounded-2xl shadow-md border border-[#ac8e60]"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+          >
+            <img
+              src={testimonial.image}
+              alt={testimonial.name}
+              className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
+            />
+            <p className="text-lg text-center italic mb-4">{testimonial.quote}</p>
+            <p className="text-center font-semibold">{testimonial.name}</p>
+            <p className="text-center text-sm">{testimonial.job}</p>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
 };
 
-export default Testimonials;
+export default Testimonios;

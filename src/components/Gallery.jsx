@@ -1,8 +1,6 @@
 // src/components/Gallery.jsx
 import React from "react";
 import { motion } from "framer-motion";
-
-// Asegúrate de importar las imágenes correctas
 import project1 from "../assets/projects/Hero1.jpg";
 import project2 from "../assets/projects/Hero2.jpg";
 import project3 from "../assets/projects/Hero3.jpg";
@@ -37,7 +35,7 @@ const Gallery = () => {
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-60 object-cover rounded-xl mb-4"
+                className="w-full h-64 object-cover rounded-xl mb-4 max-w-full max-h-64" // Ajustamos el tamaño
               />
               <h3 className="text-xl font-semibold text-[#e7decd]">{project.title}</h3>
             </motion.div>

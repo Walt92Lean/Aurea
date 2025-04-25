@@ -1,23 +1,21 @@
 // src/components/Testimonios.jsx
 import React from "react";
 import { motion } from "framer-motion";
-
-// Asegúrate de importar las imágenes correctas
-import testimonial1 from "../assets/Hero1.jpg";
-import testimonial2 from "../assets/Hero2.jpg";
+import testimonial1 from "../assets/testimonio1.jpg";  // Importar las imágenes
+import testimonial2 from "../assets/testimonio2.jpg";  // Importar las imágenes
 
 const testimonios = [
   {
     name: "Carlos Pérez",
     job: "CEO de Empresa X",
     quote: "El trabajo de Áurea Marketing transformó nuestra presencia digital de manera impresionante.",
-    image: testimonial1,  // Aquí usamos la imagen importada
+    image: testimonial1,
   },
   {
     name: "Ana Gómez",
     job: "Directora de Marketing",
     quote: "Gracias a sus estrategias, nuestras campañas han superado todas nuestras expectativas.",
-    image: testimonial2,  // Aquí usamos la imagen importada
+    image: testimonial2,
   },
 ];
 
@@ -44,7 +42,7 @@ const Testimonios = () => {
             <img
               src={testimonial.image}
               alt={testimonial.name}
-              className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
+              className="w-32 h-32 object-cover rounded-full mx-auto mb-4 max-w-full max-h-32" // Ajustamos el tamaño
             />
             <p className="text-lg text-center italic mb-4">{testimonial.quote}</p>
             <p className="text-center font-semibold">{testimonial.name}</p>

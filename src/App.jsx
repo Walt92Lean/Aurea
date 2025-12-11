@@ -1,28 +1,28 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import Contact from './components/Contact';  // Importamos el componente Contact
-import AboutUs from './components/AboutUs';
-import Testimonials from "./components/Testimonials";
-import Gallery from "./components/Gallery";
-import Footer from "./components/Footer";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 
+import Hero from "./sections/Hero";
+import Services from "./sections/Services";
+import Gallery from "./sections/Gallery";
+import Testimonials from "./sections/Testimonials";
+import AboutUs from "./sections/AboutUs";
+import Contact from "./sections/Contact";
 
-const App = () => {
+function App() {
   return (
-    <div>
+    <>
       <Navbar />
-      <Hero />
-      <Services />
-      <AboutUs/>
-      <Contact />
-      <Testimonials />
-      <Gallery />
+      <main className="max-w-6xl mx-auto px-4 py-20 space-y-32">
+        <Hero />
+        <Services />
+        <Gallery />
+        <Testimonials />
+        <AboutUs />
+        <Contact />
+      </main>
       <Footer />
-     
-    </div>
+    </>
   );
-};
+}
 
 export default App;

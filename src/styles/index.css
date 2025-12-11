@@ -1,4 +1,4 @@
-/* src/styles/index.css */
+/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Pier+Sans:wght@400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=The+Seasons&display=swap');
@@ -7,28 +7,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Estilos base del proyecto */
 body {
-  font-family: 'Pier Sans', sans-serif; /* Fuente por defecto */
+  @apply font-sans bg-aurea-primary text-aurea-white;
 }
-
-/* Títulos */
-h1, h2, h3 {
-  font-family: 'The Seasons', serif; /* Usando otra fuente para los títulos */
-}
-
-/* Texto de la marca */
-.brand-text {
-  font-family: 'Bricolage Grotesque', sans-serif;
-}
-
-/* src/styles/index.css */
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-

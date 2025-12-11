@@ -3,15 +3,45 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Button from "../components/ui/Button";
 
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xeoypkrd"; // ⬅️ Pega tu endpoint real
+
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "", _gotcha: "" });
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleChange = (e) =>
     setFormData((s) => ({ ...s, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Formulario enviado");
+    if (formData._gotcha) return; // honeypot: si lo llenó un bot, no enviamos
+    try {
+      setStatus("sending");
+      setErrorMsg("");
+
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (res.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "", _gotcha: "" });
+      } else {
+        setStatus("error");
+        setErrorMsg(data?.errors?.[0]?.message || "No se pudo enviar el mensaje.");
+      }
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg("Ocurrió un error de red. Probá nuevamente.");
+    }
   };
 
   return (
@@ -36,7 +66,20 @@ export default function Contact() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
+        noValidate
       >
+        {/* Honeypot (anti-spam) */}
+        <input
+          type="text"
+          name="_gotcha"
+          value={formData._gotcha}
+          onChange={handleChange}
+          className="hidden"
+          tabIndex="-1"
+          autoComplete="off"
+          aria-hidden="true"
+        />
+
         <div>
           <label htmlFor="name" className="block text-sm font-semibold mb-2">
             Nombre
@@ -88,8 +131,22 @@ export default function Contact() {
           />
         </div>
 
+        {/* Estado / feedback */}
+        {status === "success" && (
+          <p className="text-green-700 text-sm text-center">
+            ¡Gracias! Tu mensaje fue enviado.
+          </p>
+        )}
+        {status === "error" && (
+          <p className="text-red-700 text-sm text-center">
+            {errorMsg}
+          </p>
+        )}
+
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-          <Button type="submit">Enviar</Button>
+          <Button type="submit" disabled={status === "sending"}>
+            {status === "sending" ? "Enviando..." : "Enviar"}
+          </Button>
           <Button
             as="a"
             href="https://wa.me/595994630777"

@@ -1,97 +1,106 @@
-// src/components/Contact.jsx
-import React, { useState } from "react";
+// src/sections/Contact.jsx
+import { useState } from "react";
 import { motion } from "framer-motion";
+import Button from "../components/ui/Button";
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+export default function Contact() {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleChange = (e) =>
+    setFormData((s) => ({ ...s, [e.target.name]: e.target.value }));
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes agregar la lógica de envío del formulario
     alert("Formulario enviado");
   };
 
   return (
-    <section id="contacto" className="bg-[#121212] text-[#e7decd] py-20 px-6 md:px-20">
+    <section
+      id="contact"
+      className="scroll-mt-24 bg-aurea-secondary text-aurea-primary py-20 px-6 md:px-20"
+      aria-labelledby="contact-title"
+    >
       <motion.h2
-        className="text-4xl md:text-5xl font-bold text-center text-[#ac8e60] mb-12"
+        id="contact-title"
+        className="text-4xl md:text-5xl font-serif text-center text-aurea-accent mb-12"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
         Contáctanos
       </motion.h2>
+
       <motion.form
         onSubmit={handleSubmit}
-        className="max-w-4xl mx-auto"
+        className="max-w-3xl mx-auto space-y-6"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="mb-6">
-          <label htmlFor="name" className="block text-lg font-semibold text-[#e7decd]">
+        <div>
+          <label htmlFor="name" className="block text-sm font-semibold mb-2">
             Nombre
           </label>
           <input
-            type="text"
+            id="name"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            id="name"
-            className="w-full p-3 mt-2 bg-[#1d1d1b] text-[#e7decd] border border-[#ac8e60] rounded-md"
+            type="text"
             required
+            className="w-full px-4 py-2 rounded-md bg-aurea-white/90 text-aurea-primary
+                       border border-aurea-primary/30 focus:outline-none focus:ring-2 focus:ring-aurea-accent"
+            placeholder="Tu nombre"
           />
         </div>
-        <div className="mb-6">
-          <label htmlFor="email" className="block text-lg font-semibold text-[#e7decd]">
-            Correo Electrónico
+
+        <div>
+          <label htmlFor="email" className="block text-sm font-semibold mb-2">
+            Correo electrónico
           </label>
           <input
-            type="email"
+            id="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            id="email"
-            className="w-full p-3 mt-2 bg-[#1d1d1b] text-[#e7decd] border border-[#ac8e60] rounded-md"
+            type="email"
             required
+            className="w-full px-4 py-2 rounded-md bg-aurea-white/90 text-aurea-primary
+                       border border-aurea-primary/30 focus:outline-none focus:ring-2 focus:ring-aurea-accent"
+            placeholder="tuemail@ejemplo.com"
           />
         </div>
-        <div className="mb-6">
-          <label htmlFor="message" className="block text-lg font-semibold text-[#e7decd]">
+
+        <div>
+          <label htmlFor="message" className="block text-sm font-semibold mb-2">
             Mensaje
           </label>
           <textarea
+            id="message"
             name="message"
             value={formData.message}
             onChange={handleChange}
-            id="message"
-            className="w-full p-3 mt-2 bg-[#1d1d1b] text-[#e7decd] border border-[#ac8e60] rounded-md"
             rows="5"
             required
+            className="w-full px-4 py-2 rounded-md bg-aurea-white/90 text-aurea-primary
+                       border border-aurea-primary/30 focus:outline-none focus:ring-2 focus:ring-aurea-accent"
+            placeholder="Contanos cómo podemos ayudarte..."
           />
         </div>
-        <div className="text-center">
-          <motion.button
-            type="submit"
-            className="px-8 py-3 bg-[#ac8e60] text-white rounded-lg"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
+
+        <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+          <Button type="submit">Enviar</Button>
+          <Button
+            as="a"
+            href="https://wa.me/595994630777"
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="outline"
           >
-            Enviar
-          </motion.button>
+            Escribir por WhatsApp
+          </Button>
         </div>
       </motion.form>
     </section>
   );
-};
-
-export default Contact;
+}

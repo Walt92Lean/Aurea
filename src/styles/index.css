@@ -11,3 +11,5 @@
 body {
   @apply font-sans bg-aurea-primary text-aurea-white;
 }
+
+html { scroll-behavior: smooth; }

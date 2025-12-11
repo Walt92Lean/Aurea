@@ -1,18 +1,22 @@
-// src/components/AboutUs.jsx
-import React from "react";
+// src/sections/AboutUs.jsx
 import { motion } from "framer-motion";
 import aboutImage from "../assets/about/About.jpg";
 
-const AboutUs = () => {
+export default function AboutUs() {
   return (
-    <section id="aboutus" className="bg-aurea-secondary text-aurea-primary py-20 px-6 md:px-20">
+    <section
+      id="about"
+      className="scroll-mt-24 bg-aurea-secondary text-aurea-primary py-20 px-6 md:px-20"
+      aria-labelledby="about-title"
+    >
       <motion.h2
+        id="about-title"
         className="text-4xl md:text-5xl font-serif text-center text-aurea-accent mb-12"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        ¿Quiénes Somos?
+        ¿Quiénes somos?
       </motion.h2>
 
       <div className="grid md:grid-cols-2 gap-10 items-center">
@@ -23,8 +27,8 @@ const AboutUs = () => {
           transition={{ duration: 0.6 }}
         >
           <p className="text-lg md:text-xl leading-relaxed font-sans">
-            <strong className="brand-text text-aurea-accent">Áurea Marketing</strong> es una agencia de marketing digital enfocada en crear estrategias personalizadas para hacer crecer tu marca.
-            Nuestro equipo se dedica a entender tus objetivos y ofrecer soluciones innovadoras para cada desafío.
+            <strong className="brand-text text-aurea-accent">Áurea Marketing</strong> es una agencia creativa y estratégica.
+            Diseñamos contenido, campañas y experiencias que hacen brillar tu marca, siempre alineadas a objetivos reales de negocio.
           </p>
         </motion.div>
 
@@ -35,13 +39,12 @@ const AboutUs = () => {
         >
           <img
             src={aboutImage}
-            alt="Sobre nosotros"
+            alt="Equipo de Áurea trabajando en estrategia y diseño"
             className="w-full h-auto rounded-xl shadow-xl"
+            loading="lazy"
           />
         </motion.div>
       </div>
     </section>
   );
-};
-
-export default AboutUs;
+}

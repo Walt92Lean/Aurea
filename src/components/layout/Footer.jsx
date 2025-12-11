@@ -1,38 +1,31 @@
-import React from "react";
-import { motion } from "framer-motion";
+// src/components/layout/Footer.jsx
 import { FaInstagram, FaFacebookF, FaTwitter } from "react-icons/fa";
 
-const Footer = () => {
+export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="bg-[#121212] text-[#e7decd] py-6">
-      <div className="max-w-6xl mx-auto text-center">
-        <motion.p
-          className="text-lg mb-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          © 2025 Áurea Marketing. Todos los derechos reservados.
-        </motion.p>
-        <motion.div
-          className="flex justify-center space-x-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
-        >
-          <a href="#" className="text-[#ac8e60]">
-            <FaInstagram size={30} />
+    <footer className="bg-aurea-primary text-aurea-secondary py-8">
+      <div className="max-w-6xl mx-auto px-4 text-center space-y-4">
+        <p className="font-sans">© {year} Áurea Marketing. Todos los derechos reservados.</p>
+
+        <div className="flex justify-center gap-5">
+          <a
+            href="https://www.instagram.com/aureaimpulsa/" target="_blank"
+            className="text-aurea-accent hover:opacity-80 transition"
+            aria-label="Instagram de Áurea"
+          >
+            <FaInstagram size={24} />
           </a>
-          <a href="#" className="text-[#ac8e60]">
-            <FaFacebookF size={30} />
+          <a
+            href="https://www.facebook.com/profile.php?id=61580096033576" target="_blank"
+            className="text-aurea-accent hover:opacity-80 transition"
+            aria-label="Facebook de Áurea"
+          >
+            <FaFacebookF size={24} />
           </a>
-          <a href="#" className="text-[#ac8e60]">
-            <FaTwitter size={30} />
-          </a>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}
